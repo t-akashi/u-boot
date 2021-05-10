@@ -10,7 +10,6 @@ This test verifies capsule-on-disk firmware update
 
 from subprocess import check_call, check_output, CalledProcessError
 import pytest
-from u_boot_console_sandbox import ConsoleSandbox
 from capsule_defs import *
 
 

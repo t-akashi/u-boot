@@ -11,7 +11,6 @@ with signed capsule files
 
 from subprocess import check_call, check_output, CalledProcessError
 import pytest
-from u_boot_console_sandbox import ConsoleSandbox
 from capsule_defs import *
 
 @pytest.mark.boardspec('sandbox')
@@ -43,7 +42,6 @@ class TestEfiCapsuleFirmwareSigned(object):
                 'efidebug boot order 1',
                 'env set -e -nv -bs -rt OsIndications =0x0000000000000004',
                 'env set dfu_alt_info "sf 0:0=u-boot-bin raw 0x100000 0x50000;u-boot-env raw 0x150000 0x200000"',
-                'env set capsule_authentication_enabled 1',
                 'env save'])
 
             # initialize content
@@ -75,7 +73,6 @@ class TestEfiCapsuleFirmwareSigned(object):
                 # are not available.
                 output = u_boot_console.run_command_list([
                     'env set dfu_alt_info "sf 0:0=u-boot-bin raw 0x100000 0x50000;u-boot-env raw 0x150000 0x200000"',
-                    'env set capsule_authentication_enabled 1',
                     'host bind 0 %s' % disk_img,
                     'fatls host 0:1 %s' % CAPSULE_INSTALL_DIR])
                 assert 'Test03' in ''.join(output)
@@ -113,7 +110,6 @@ class TestEfiCapsuleFirmwareSigned(object):
                 'efidebug boot order 1',
                 'env set -e -nv -bs -rt OsIndications =0x0000000000000004',
                 'env set dfu_alt_info "sf 0:0=u-boot-bin raw 0x100000 0x50000;u-boot-env raw 0x150000 0x200000"',
-                'env set capsule_authentication_enabled 1',
                 'env save'])
 
             # initialize content
@@ -145,7 +141,6 @@ class TestEfiCapsuleFirmwareSigned(object):
                 # are not available.
                 output = u_boot_console.run_command_list([
                     'env set dfu_alt_info "sf 0:0=u-boot-bin raw 0x100000 0x50000;u-boot-env raw 0x150000 0x200000"',
-                    'env set capsule_authentication_enabled 1',
                     'host bind 0 %s' % disk_img,
                     'fatls host 0:1 %s' % CAPSULE_INSTALL_DIR])
                 assert 'Test04' in ''.join(output)
@@ -185,7 +180,6 @@ class TestEfiCapsuleFirmwareSigned(object):
                 'efidebug boot order 1',
                 'env set -e -nv -bs -rt OsIndications =0x0000000000000004',
                 'env set dfu_alt_info "sf 0:0=u-boot-bin raw 0x100000 0x50000;u-boot-env raw 0x150000 0x200000"',
-                'env set capsule_authentication_enabled 1',
                 'env save'])
 
             # initialize content
@@ -217,7 +211,6 @@ class TestEfiCapsuleFirmwareSigned(object):
                 # are not available.
                 output = u_boot_console.run_command_list([
                     'env set dfu_alt_info "sf 0:0=u-boot-bin raw 0x100000 0x50000;u-boot-env raw 0x150000 0x200000"',
-                    'env set capsule_authentication_enabled 1',
                     'host bind 0 %s' % disk_img,
                     'fatls host 0:1 %s' % CAPSULE_INSTALL_DIR])
                 assert 'Test02' in ''.join(output)
